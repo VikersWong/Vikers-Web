@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的导航</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔖</text></svg>">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif;
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:40px 20px 100px;
+  position:relative;
+  background:url("bg.jpg") center/cover no-repeat fixed;
+}
+body::after{
+  content:"";position:fixed;inset:0;
+  background:rgba(10,8,30,.15);
+  z-index:-1
+}
+body::before{
+  content:"";position:fixed;inset:0;
+  background:url("bg.jpg") center/cover no-repeat fixed;
+  z-index:-2
+}
+.container{width:100%;max-width:720px;position:relative;z-index:1}
+.search-box{
+  display:flex;align-items:center;height:48px;
+  background:rgba(255,255,255,.22);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:0 18px;
+  margin-bottom:40px;transition:border-color .25s,box-shadow .25s
+}
+.search-box:focus-within{border-color:rgba(140,130,255,.5);box-shadow:0 0 24px rgba(100,90,220,.15)}
+.search-box i{color:#fff;margin-right:12px;flex-shrink:0}
+.search-box input{flex:1;background:none;border:none;outline:none;color:#ddd;font-size:15px}
+.search-box input::placeholder{color:rgba(255,255,255,.6)}
+.categories{display:flex;flex-direction:column;gap:34px}
+.category h2{
+  font-size:13px;font-weight:600;
+  color:#000;text-transform:uppercase;
+  letter-spacing:2px;margin-bottom:14px;padding-left:2px
+}
+.links-grid{
+  display:grid;grid-template-columns:repeat(8,1fr);gap:16px
+}
+.link-card{
+  display:flex;flex-direction:column;align-items:center;width:100%;
+  text-decoration:none;padding:10px 2px 6px;
+  border-radius:12px;cursor:pointer;
+  transition:background .25s,transform .2s
+}
+.link-card:hover{background:rgba(255,255,255,.06);transform:translateY(-3px)}
+.link-card:active{transform:scale(.93)}
+.link-icon{
+  width:48px;height:48px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;margin-bottom:6px;
+  transition:transform .2s,box-shadow .25s
+}
+.link-card:hover .link-icon{transform:scale(1.1);box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.link-label{font-size:11px;color:#fff;text-align:center;line-height:1.3;max-width:68px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color .2s}
+.link-card:hover .link-label{color:#fff}
+@media(max-width:640px){
+  body{padding:24px 14px 80px}
+  .container{max-width:100%}
+  .links-grid{grid-template-columns:repeat(4,1fr);gap:12px}
+  .link-icon{width:44px;height:44px;font-size:18px;border-radius:12px}
+  .link-label{font-size:10px;max-width:60px}
+  .category h2{font-size:12px}
+}
+.dock{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:40px;padding:12px 45px;width:580px;max-width:calc(100vw - 40px);background:rgba(255,255,255,.2);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.15);border-radius:18px;box-shadow:0 4px 30px rgba(0,0,0,.08);z-index:100}
+.dock-item{display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .2s;position:relative}
+.dock-item:hover{transform:translateY(-6px)}
+.dock-item:active{transform:scale(.88)}
+.dock-icon{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;overflow:hidden;font-size:22px;transition:border-radius .2s}
+.dock-item:hover .dock-icon{border-radius:10px}
+.dock-item::after{
+  content:attr(data-label);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
+  background:rgba(0,0,0,.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  color:#ddd;font-size:11px;padding:4px 10px;border-radius:6px;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .15s
+}
+.dock-item:hover::after{opacity:1}
+.dock{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:40px;padding:12px 45px;width:580px;max-width:calc(100vw - 40px);background:rgba(255,255,255,.2);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.15);border-radius:18px;box-shadow:0 4px 30px rgba(0,0,0,.08);z-index:100}
+.welcome{color:#fff;text-align:center;font-size:22px;font-weight:700;margin-bottom:26px;letter-spacing:3px}
+.welcome span{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="welcome"><span>OH TikTok导航</span></div>
+
+  <div class="search-box">
+    <i data-lucide="search" size="19"></i>
+    <input type="text" placeholder="请输入网址..." id="searchInput">
+  </div>
+
+  <div class="categories">
+
+    <!-- 常用AI -->
+    <div class="category">
+      <h2>常用AI</h2>
+      <div class="links-grid">
+        <a href="https://chatgpt.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/chatgpt.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">ChatGPT</span></a>
+        <a href="https://gemini.google.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/gemini.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">Gemini</span></a>
+        <a href="https://claude.ai" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/claude.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">Claude</span></a>
+        <a href="https://grok.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/grok.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">Grok</span></a>
+        <a href="https://www.doubao.com/chat/" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/doubao.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">豆包</span></a>
+        <a href="https://tongyi.aliyun.com/qianwen/" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/qianwen.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">千问</span></a>
+        <a href="https://chat.deepseek.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/deepseek.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">DeepSeek</span></a>
+        <a href="https://www.kimi.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/kimi.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">Kimi</span></a>
+      </div>
+    </div>
+
+    <!-- 跨境ERP -->
+    <div class="category">
+      <h2>跨境ERP</h2>
+      <div class="links-grid">
+        <a href="https://erp.91miaoshou.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/miaoshou.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">妙手 ERP</span></a>
+        <a href="https://www.saihuerp.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/saihu.svg" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">赛狐 ERP</span></a>
+        <a href="https://www.lingxing.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/lingxing.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">领星 ERP</span></a>
+        <a href="https://www.dianxiaomi.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/dianxiaomi.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">店小秘 ERP</span></a>
+        <a href="https://www.mabangerp.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/mabang.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">马帮 ERP</span></a>
+        <a href="https://www.mangoerp.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/mangguo.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">芒果店长 ERP</span></a>
+        <a href="https://www.jijiaerp.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/jijia.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">积加 ERP</span></a>
+        <a href="https://www.tongtool.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/tongtu.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">通途 ERP</span></a>
+      </div>
+    </div>
+
+    <!-- 专线网络 -->
+    <div class="category">
+      <h2>专线网络</h2>
+      <div class="links-grid">
+        <a href="http://m.kjtong.shop" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/kuajingtong.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">跨境通</span></a>
+        <a href="https://www.oxylabs.io" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;font-weight:700;color:#4a90d9;font-size:13px">Oxy</div><span class="link-label">Oxylabs</span></a>
+        <a href="https://www.ipipgo.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/ipipgo.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">IPIPGO</span></a>
+        <a href="https://www.netnut.io" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/netnut.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">NetNut</span></a>
+        <a href="https://www.iproyal.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/iproyal.svg" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">IPRoyal</span></a>
+        <a href="https://www.vircs.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/vircs.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">VIRCS</span></a>
+        <a href="https://www.loongproxy.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/loongproxy.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">LoongProxy</span></a>
+        <a href="https://www.tankip.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/tankip.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">Tank IP</span></a>
+      </div>
+    </div>
+
+    <!-- 外贸工具 -->
+    <div class="category">
+      <h2>外贸工具</h2>
+      <div class="links-grid">
+        <a href="https://www.ziniao.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/ziniao.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">紫鸟</span></a>
+        <a href="https://www.zhanfubrowser.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/zhanfu.svg" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">战斧</span></a>
+        <a href="https://www.echotik.live" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;font-weight:700;color:#4a90d9;font-size:15px">Echo</div><span class="link-label">EchoTik</span></a>
+        <a href="https://www.kalodata.com/zh" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;font-weight:700;color:#4a90d9;font-size:15px">Kalo</div><span class="link-label">Kalodata</span></a>
+        <a href="https://global.lianlianpay.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/lianlian.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">连连</span></a>
+        <a href="https://www.airwallex.com/cn" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/airwallex.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">空中云汇</span></a>
+        <a href="https://www.yunquna.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/yunquna.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">运去哪</span></a>
+        <a href="https://www.lingxing.com" class="link-card" target="_blank"><div class="link-icon" style="background:#fff;padding:2px"><img src="logos/lingxing.png" style="width:100%;height:100%;object-fit:contain;border-radius:8px" alt=""></div><span class="link-label">领星</span></a>
+      </div>
+    </div>
+
+  </div>
+  <!-- 底部任务栏 Dock -->
+  <div class="dock">
+    <a class="dock-item" href="https://www.baidu.com" target="_blank" data-label="百度"><div class="dock-icon" style="background:#fff;padding:2px"><img src="logos/baidu.png" style="width:100%;height:100%;object-fit:contain;border-radius:10px" alt=""></div></a>
+    <a class="dock-item" href="https://www.google.com" target="_blank" data-label="谷歌"><div class="dock-icon" style="background:#fff;padding:2px"><img src="logos/google.svg" style="width:100%;height:100%;object-fit:contain;border-radius:10px" alt=""></div></a>
+    <a class="dock-item" href="https://fanyi.baidu.com" target="_blank" data-label="百度翻译"><div class="dock-icon" style="background:#fff;padding:2px"><img src="logos/baidu-fanyi.png" style="width:100%;height:100%;object-fit:contain;border-radius:10px" alt=""></div></a>
+    <a class="dock-item" href="https://translate.google.com" target="_blank" data-label="谷歌翻译"><div class="dock-icon" style="background:#fff;padding:2px"><img src="logos/google-translate.png" style="width:100%;height:100%;object-fit:contain;border-radius:10px" alt=""></div></a>
+    <a class="dock-item" href="https://www.tiktok.com" target="_blank" data-label="TikTok"><div class="dock-icon" style="background:#fff;padding:2px"><img src="logos/tiktok.png" style="width:100%;height:100%;object-fit:contain;border-radius:10px" alt=""></div></a>
+    <a class="dock-item" href="https://outlook.live.com" target="_blank" data-label="Hotmail"><div class="dock-icon" style="background:#fff;padding:2px"><img src="logos/hotmail.png" style="width:100%;height:100%;object-fit:contain;border-radius:10px" alt=""></div></a>
+  </div>
+</div>
+<script>
+lucide.createIcons();
+const input = document.getElementById('searchInput');
+input.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    const val = input.value.trim();
+    if (!val) return;
+    const hasDot = val.includes('.');
+    const url = hasDot
+      ? (val.startsWith('http://') || val.startsWith('https://') ? val : 'https://' + val)
+      : 'https://www.baidu.com/s?wd=' + encodeURIComponent(val);
+    window.open(url, '_blank');
+  }
+});
+</script>
+</body>
+</html>
