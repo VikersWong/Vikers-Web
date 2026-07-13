@@ -1,8 +1,0 @@
-<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-<!-- 橙色菱形图标 - 从赛狐官方 SVG 提取 -->
-<g transform="translate(11, 11) scale(1)">
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.0874023L12.905 12.998L25.7383 0.0874023V12.998L12.905 25.9135L0 12.9528V0.0874023Z" fill="#F39D22"/>
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M12.8747 25.9082L7.73141 20.7446H17.9997L12.8747 25.9082Z" fill="#151A1C"/>
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M12.8753 11.7056L6.44531 5.24951H19.2786L12.8753 11.7056Z" fill="#F39D22"/>
-</g>
-</svg>
