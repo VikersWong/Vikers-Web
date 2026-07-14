@@ -373,7 +373,7 @@
   function fitPage() {
     var w = window.innerWidth;
     var h = window.innerHeight;
-    var scale = Math.min(w / 1920, h / 1080);
+    var scale = Math.max(w / 1920, h / 1080);
     document.body.style.transform = 'scale(' + scale + ')';
     document.body.style.transformOrigin = 'top left';
     document.body.style.width = '1920px';
@@ -600,7 +600,7 @@
 
 <!-- 底部 -->
   <div class="footer">
-    <div class="footer-left">服务定制 · 按需报价 · 视行业内容生成难度调整最终价格 · 详询客服 <span style="color:#008880; font-weight:700">sahara_2007</span></div>
+    <div class="footer-left">服务定制 · 按需报价 · 视行业内容生成难度调整最终价格 · 详询客服 <span style="color:#008880; font-weight:700">xy800686</span></div>
     <div class="footer-right">TK自媒体短视频平台自动化定制服务</div>
   </div>
 
