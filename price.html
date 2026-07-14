@@ -369,6 +369,19 @@
     color: #5a5a80;
   }
 </style>
+<script>
+  function fitPage() {
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    var scale = Math.min(w / 1920, h / 1080);
+    document.body.style.transform = 'scale(' + scale + ')';
+    document.body.style.transformOrigin = 'top left';
+    document.body.style.width = '1920px';
+    document.body.style.height = '1080px';
+  }
+  window.addEventListener('resize', fitPage);
+  window.addEventListener('load', fitPage);
+</script>
 </head>
 <body>
 
