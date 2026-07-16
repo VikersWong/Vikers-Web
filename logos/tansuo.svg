@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- 探索：简洁放大镜 -->
+  <defs>
+    <linearGradient id="st" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6C5CE7"/>
+      <stop offset="100%" style="stop-color:#4834D4"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="46" fill="none" stroke="url(#st)" stroke-width="2" opacity="0.3"/>
+  <!-- 放大镜手柄 -->
+  <line x1="68" y1="68" x2="82" y2="82" stroke="url(#st)" stroke-width="5" stroke-linecap="round"/>
+  <!-- 放大镜圈 -->
+  <circle cx="46" cy="46" r="26" fill="none" stroke="url(#st)" stroke-width="4.5"/>
+  <!-- 镜片内光点 -->
+  <circle cx="38" cy="38" r="4" fill="#A29BFE" opacity="0.5"/>
+</svg>
