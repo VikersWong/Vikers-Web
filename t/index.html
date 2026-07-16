@@ -5,86 +5,75 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TikTok 跨境电商智能导航 | AI工具 · 品类洞察</title>
 <style>
-/* ===== TikTok Inspired Color Scheme ===== */
-/* Pink: #FE2C55 | Cyan: #00F2EA | Dark: #121212 | Light: #fff5f6 */
-/* ===== Reset & Base ===== */
+/* ===== TikTok 官网风格 —— 极简白底 + 红黑配色 ===== */
+/* 主色: #FE2C55 / #000 / #fff */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;background:#fff;color:#121212;min-height:100vh}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;background:#111;color:#000;min-height:100vh}
 
 /* ===== Header ===== */
-.header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);border-bottom:1px solid #f0f0f0;padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px)}
+.header{position:sticky;top:0;z-index:100;background:#1a1a1a;border-bottom:none;padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,#00F2EA,#FE2C55);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px;box-shadow:0 2px 12px rgba(254,44,85,.25)}
-.logo-text{font-size:20px;font-weight:800;color:#121212}
-.logo-sub{font-size:12px;color:#999;margin-left:4px;font-weight:400}
+.logo-icon{width:36px;height:36px;background:#FE2C55;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px}
+.logo-text{font-size:20px;font-weight:800;color:#fff}
+.logo-sub{font-size:12px;color:#888;margin-left:4px;font-weight:400}
 .nav{display:flex;gap:32px;align-items:center}
-.nav a{text-decoration:none;color:#666;font-size:14px;font-weight:500;transition:color .2s;position:relative}
-.nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:#FE2C55;transition:width .25s;border-radius:2px}
+.nav a{text-decoration:none;color:#aaa;font-size:14px;font-weight:500;transition:color .2s}
 .nav a:hover{color:#FE2C55}
-.nav a:hover::after{width:100%}
 
 /* ===== Hero ===== */
-.hero{background:linear-gradient(135deg,#FFE5EC 0%,#E5FAFF 40%,#FFF0F3 100%);padding:80px 48px 72px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 50%,rgba(254,44,85,.08) 0%,transparent 50%),radial-gradient(ellipse at 70% 50%,rgba(0,242,234,.08) 0%,transparent 50%);pointer-events:none}
-.hero-content{position:relative;z-index:1;max-width:900px;margin:0 auto}
-.hero-badge{display:inline-block;background:linear-gradient(135deg,rgba(254,44,85,.1),rgba(0,242,234,.1));border:1px solid rgba(254,44,85,.15);color:#FE2C55;font-size:12px;padding:4px 16px;border-radius:20px;margin-bottom:20px;letter-spacing:1px}
-.hero h1{font-size:44px;font-weight:800;color:#121212;line-height:1.2;margin-bottom:16px}
-.hero h1 span{background:linear-gradient(135deg,#FE2C55,#00F2EA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{font-size:16px;color:#666;max-width:600px;margin:0 auto 32px;line-height:1.7}
+.hero{background:#000;padding:80px 48px 56px;text-align:center;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#FE2C55,transparent)}
+.hero-content{max-width:900px;margin:0 auto}
+.hero-badge{display:inline-block;background:rgba(254,44,85,.15);color:#FE2C55;font-size:12px;padding:4px 16px;border-radius:20px;margin-bottom:20px}
+.hero h1{font-size:44px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:#FE2C55}
+.hero p{font-size:16px;color:#888;max-width:600px;margin:0 auto 32px;line-height:1.7}
 .hero-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
 .hero-stat{text-align:center}
-.hero-stat-num{font-size:28px;font-weight:800;color:#121212;display:block}
-.hero-stat-label{font-size:12px;color:#999;margin-top:2px}
+.hero-stat-num{font-size:28px;font-weight:800;color:#fff;display:block}
+.hero-stat-label{font-size:12px;color:#888;margin-top:2px}
 
 /* ===== Sections ===== */
-.section{padding:60px 48px;max-width:1400px;margin:0 auto}
+.section{padding:60px 48px;max-width:1400px;margin:0 auto 20px;background:#fff;border-radius:16px}
 .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px;flex-wrap:wrap;gap:12px}
-.section-title-group{display:flex;align-items:center;gap:14px}
-.section-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.section-icon.tools{background:linear-gradient(135deg,rgba(0,242,234,.15),rgba(0,242,234,.06));color:#00b8b0}
-.section-icon.insight{background:linear-gradient(135deg,rgba(254,44,85,.15),rgba(254,44,85,.06));color:#FE2C55}
-.section-title{font-size:26px;font-weight:700;color:#121212}
-.section-title small{font-size:14px;font-weight:400;color:#999;margin-left:8px}
-.section-desc{font-size:14px;color:#888;max-width:500px}
-.section-line{flex:1;min-width:60px;height:1px;background:linear-gradient(90deg,rgba(0,242,234,.2),transparent);margin-left:12px}
+.section-title-group{display:flex;align-items:center;gap:12px}
+.section-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.section-icon.tools{background:#f5f5f5;color:#000}
+.section-icon.insight{background:#fff1f3;color:#FE2C55}
+.section-title{font-size:24px;font-weight:800;color:#000}
+.section-title small{font-size:14px;font-weight:400;color:#999;margin-left:6px}
+.section-desc{font-size:14px;color:#999}
+.section-line{flex:1;min-width:60px;height:1px;background:#eee;margin-left:12px}
 
 /* ===== Grid ===== */
-.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
 
-/* ===== Card (Tool) ===== */
-.card{background:#fff;border-radius:16px;padding:22px 18px;border:1px solid #f0f0f0;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:all .3s cubic-bezier(.4,0,.2,1);position:relative;cursor:pointer;display:flex;flex-direction:column;align-items:center;text-align:center}
-.card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(254,44,85,.12),0 4px 12px rgba(0,0,0,.06);border-color:rgba(254,44,85,.2)}
-.card-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:12px;flex-shrink:0;background:linear-gradient(135deg,rgba(0,242,234,.1),rgba(0,242,234,.05));transition:all .3s}
-.card:hover .card-icon{background:linear-gradient(135deg,rgba(0,242,234,.2),rgba(0,242,234,.1));transform:scale(1.05)}
-.card-name{font-size:15px;font-weight:600;color:#121212;margin-bottom:4px;transition:color .2s}
-.card:hover .card-name{color:#FE2C55}
+/* ===== Card ===== */
+.card{background:#fff;border-radius:12px;padding:20px 16px;border:1px solid #eee;transition:all .2s;position:relative;cursor:pointer;display:flex;flex-direction:column;align-items:center;text-align:center}
+.card:hover{border-color:#FE2C55;box-shadow:0 4px 16px rgba(254,44,85,.08)}
+.card-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:10px;flex-shrink:0;background:#f5f5f5;transition:background .2s}
+.card:hover .card-icon{background:#fff1f3}
+.card-name{font-size:15px;font-weight:600;color:#000;margin-bottom:4px}
 .card-desc{font-size:12px;color:#999;line-height:1.4}
-.card-tag{position:absolute;top:12px;right:12px;font-size:10px;padding:2px 8px;border-radius:6px;font-weight:600}
-.card-tag.free{background:rgba(0,242,234,.12);color:#00b8b0}
-.card-tag.paid{background:rgba(254,44,85,.1);color:#FE2C55}
-.card-tag.freemium{background:rgba(0,242,234,.08);color:#00b8b0}
-.card-link{position:absolute;top:0;right:0;bottom:0;left:0;border-radius:16px;z-index:2;text-indent:-9999px;overflow:hidden}
-.card-link:focus-visible{outline:2px solid #FE2C55;outline-offset:2px}
-.card-action{font-size:11px;color:#FE2C55;font-weight:600;margin-top:10px;opacity:0;transform:translateY(4px);transition:all .25s}
-.card:hover .card-action{opacity:1;transform:translateY(0)}
+.card-tag{position:absolute;top:10px;right:10px;font-size:10px;padding:1px 7px;border-radius:4px;font-weight:500;background:#f5f5f5;color:#999}
+.card-tag.free{background:#e8f5e9;color:#2e7d32}
+.card-tag.freemium{background:#e8f5e9;color:#2e7d32}
+.card-tag.paid{background:#ffebee;color:#c62828}
+.card-link{position:absolute;top:0;right:0;bottom:0;left:0;border-radius:12px;z-index:2;text-indent:-9999px;overflow:hidden}
+.card-action{font-size:11px;color:#FE2C55;font-weight:600;margin-top:8px;opacity:0;transition:opacity .2s}
+.card:hover .card-action{opacity:1}
 
 /* ===== Card (Category) ===== */
-.card.cat{background:linear-gradient(135deg,#fff,#f8ffff);border:1px solid #f0f0f0;padding:26px 18px 22px}
-.card.cat:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,242,234,.15),0 4px 12px rgba(0,0,0,.06);border-color:rgba(0,242,234,.2)}
-.card.cat .card-icon{background:linear-gradient(135deg,rgba(0,242,234,.1),rgba(0,242,234,.05));font-size:24px}
-.card.cat:hover .card-icon{background:linear-gradient(135deg,rgba(0,242,234,.2),rgba(0,242,234,.1))}
-.card.cat:hover .card-name{color:#00b8b0}
-.card.cat .card-name{font-size:17px;font-weight:700}
-.card.cat .card-desc{font-size:12px;color:#999;margin-top:2px}
-.card.cat .card-badge{font-size:10px;padding:2px 10px;border-radius:20px;background:rgba(254,44,85,.08);color:#FE2C55;font-weight:500;margin-top:10px;transition:all .25s}
-.card.cat:hover .card-badge{background:rgba(0,242,234,.12);color:#00b8b0}
-.card.cat .card-action{color:#00b8b0}
+.card.cat{padding:22px 16px 18px}
+.card.cat .card-name{font-size:16px}
+.card.cat .card-badge{font-size:10px;padding:2px 10px;border-radius:20px;background:#f5f5f5;color:#999;margin-top:8px;transition:all .2s}
+.card.cat:hover .card-badge{background:#fff1f3;color:#FE2C55}
 
 /* ===== Footer ===== */
-.footer{background:#121212;padding:40px 48px;text-align:center;margin-top:20px}
+.footer{background:#000;padding:40px 48px;text-align:center}
 .footer p{color:#999;font-size:13px;line-height:1.8}
-.footer p a{color:#00F2EA;text-decoration:none}
+.footer p a{color:#FE2C55;text-decoration:none}
 .footer-brand{font-size:18px;font-weight:700;color:#fff;margin-bottom:8px}
 
 /* ===== Responsive ===== */
@@ -92,12 +81,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 @media(max-width:992px){.grid{grid-template-columns:repeat(3,1fr)}.hero h1{font-size:34px}}
 @media(max-width:768px){.section,.header{padding-left:20px;padding-right:20px}.grid{grid-template-columns:repeat(2,1fr)}.hero{padding:56px 20px}.hero h1{font-size:28px}.hero-stats{gap:24px}}
 @media(max-width:480px){.grid{grid-template-columns:repeat(1,1fr)}.section{padding:36px 16px}}
-
-/* ===== Scrollbar ===== */
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:#f5f5f5}
-::-webkit-scrollbar-thumb{background:#ddd;border-radius:3px}
-::-webkit-scrollbar-thumb:hover{background:#bbb}
 </style>
 </head>
 <body>
@@ -106,10 +89,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 <header class="header">
   <a href="#" class="logo">
     <div class="logo-icon">TK</div>
-    <span class="logo-text">OH TikTok</span><span class="logo-sub">| 跨境智能导航</span>
+    <span class="logo-text">OH TikTok</span><span class="logo-sub">| 深度AI赋能</span>
   </a>
   <nav class="nav">
-    <a href="#tools">常用工具</a>
+    <a href="#tools">效率工具</a>
     <a href="#insight">品类洞察</a>
   </nav>
 </header>
@@ -117,8 +100,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 <!-- ===== Hero ===== -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-badge">✦ TIKTOK 跨境电商 · 智能导航</div>
-    <h1>AI 驱动 <span>数据化选品</span><br>赢战全球市场</h1>
+    <div class="hero-badge">✦ TIKTOK 跨境电商 · 深度AI赋能</div>
+    <h1>数据化选品 <span>AI 赋能</span><br>迎战<span>TikTok</span>跨境电商</h1>
     <p>聚合 10 款顶尖 AI 工具与 15 大 TikTok 全区域品类深度调研报告，<br>助你精准选品、高效运营，实现跨境生意增长。</p>
     <div class="hero-stats">
       <div class="hero-stat"><span class="hero-stat-num">10</span><span class="hero-stat-label">AI 工具</span></div>
@@ -128,12 +111,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
   </div>
 </section>
 
-<!-- ===== Section: 常用工具 ===== -->
+<!-- ===== Section: 效率工具 ===== -->
 <section class="section" id="tools">
   <div class="section-header">
     <div class="section-title-group">
       <div class="section-icon tools">⚡</div>
-      <h2 class="section-title">常用工具<small>AI 工具化导航</small></h2>
+      <h2 class="section-title">效率工具<small>AI生产力工具</small></h2>
     </div>
     <div class="section-line"></div>
     <div class="section-desc">精选 10 款口碑好、能实际解决问题的 AI 生产工具</div>
@@ -156,7 +139,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 
 <!-- ===== Footer ===== -->
 <footer class="footer">
-  <div class="footer-brand">OH TikTok · 跨境智能导航</div>
+  <div class="footer-brand">OH TikTok · 深度AI赋能</div>
   <p>TikTok 跨境电商 AI 工具导航 &amp; 品类数据洞察平台<br>
   为跨境卖家提供一站式 AI 解决方案与数据化选品支持</p>
   <p style="margin-top:12px;font-size:12px;color:#475569">© 2026 OH TikTok · 数据驱动 · 智赢跨境</p>
@@ -167,7 +150,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 const tools = [
   {name:'可灵 AI',icon:'🎬',desc:'快手 AI 视频生成工具',tag:'freemium',url:'https://kling.kuaishou.com'},
   {name:'Artlist',icon:'🎵',desc:'短视频AI聚合平台',tag:'paid',url:'https://artlist.io'},
-  {name:'Clipcat',icon:'✂️',desc:'AI短视频生成平台',tag:'paid',url:'https://clipcat.ai/'},
+  {name:'Clipcat',icon:'✂️',desc:'AI短视频生成平台',tag:'free',url:'https://clipcat.ai/'},
   {name:'Canva',icon:'🎨',desc:'AI 在线设计全能平台',tag:'freemium',url:'https://www.canva.com'},
   {name:'Runway',icon:'🎥',desc:'AI 视频生成与编辑',tag:'paid',url:'https://runwayml.com'},
   {name:'Midjourney',icon:'🖼️',desc:'AI 图像生成旗舰工具',tag:'paid',url:'https://www.midjourney.com'},
