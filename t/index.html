@@ -163,21 +163,21 @@ const tools = [
 
 // ===== 15 Categories Data =====
 const categories = [
-  {name:'美妆',desc:'美妆爆款选品分析',icon:'💄'},
-  {name:'女装',desc:'女装品类趋势报告',icon:'👗'},
-  {name:'3C数码',desc:'数码产品选品洞察',icon:'📱'},
-  {name:'家居',desc:'家居品类市场分析',icon:'🏠'},
-  {name:'食品',desc:'食品饮料趋势洞察',icon:'🍜'},
-  {name:'运动户外',desc:'运动品类数据报告',icon:'⚽'},
-  {name:'母婴',desc:'母婴用品选品调研',icon:'🍼'},
-  {name:'宠物',desc:'宠物市场趋势分析',icon:'🐾'},
-  {name:'健康',desc:'健康品类数据报告',icon:'💪'},
-  {name:'珠宝',desc:'珠宝配饰选品报告',icon:'💍'},
-  {name:'男装',desc:'男装市场调研数据',icon:'👔'},
-  {name:'旅行',desc:'旅行用品选品洞察',icon:'✈️'},
-  {name:'汽车',desc:'汽车品类调研报告',icon:'🚗'},
-  {name:'办公',desc:'办公用品选品分析',icon:'✏️'},
-  {name:'玩具',desc:'玩具品类趋势洞察',icon:'🎮'}
+  {name:'美妆',desc:'美妆爆款选品分析',icon:'💄',url:'01.html'},
+  {name:'女装',desc:'女装品类趋势报告',icon:'👗',url:'02.html'},
+  {name:'3C数码',desc:'数码产品选品洞察',icon:'📱',url:'03.html'},
+  {name:'家居',desc:'家居品类市场分析',icon:'🏠',url:'04.html'},
+  {name:'食品',desc:'食品饮料趋势洞察',icon:'🍜',url:'05.html'},
+  {name:'运动户外',desc:'运动品类数据报告',icon:'⚽',url:'06.html'},
+  {name:'母婴',desc:'母婴用品选品调研',icon:'🍼',url:'07.html'},
+  {name:'宠物',desc:'宠物市场趋势分析',icon:'🐾',url:'08.html'},
+  {name:'健康',desc:'健康品类数据报告',icon:'💪',url:'09.html'},
+  {name:'珠宝',desc:'珠宝配饰选品报告',icon:'💍',url:'10.html'},
+  {name:'男装',desc:'男装市场调研数据',icon:'👔',url:'11.html'},
+  {name:'旅行',desc:'旅行用品选品洞察',icon:'✈️',url:'12.html'},
+  {name:'汽车',desc:'汽车品类调研报告',icon:'🚗',url:'13.html'},
+  {name:'办公',desc:'办公用品选品分析',icon:'✏️',url:'14.html'},
+  {name:'玩具',desc:'玩具品类趋势洞察',icon:'🎮',url:'15.html'}
 ];
 
 // ===== Render =====
@@ -194,6 +194,7 @@ function renderCards(containerId, data, type) {
         <div class="card-name">${item.name}</div>
         <div class="card-desc">${item.desc}</div>
         <div class="card-badge">查看报告 →</div>
+        <a class="card-link" href="${item.url}">${item.name}</a>
       </div>`;
     } else {
       return `<div class="card">
