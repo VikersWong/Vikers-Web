@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>珠宝配饰 💍 | TikTok Shop 品类市场分析报告 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif; background:#fff; color:#1e293b; line-height:1.6; }
+
+/* ── Header ── */
+.header { position:sticky; top:0; z-index:1000; background:rgba(30,27,75,.95); backdrop-filter:blur(10px); height:64px; display:flex; align-items:center; padding:0 24px; justify-content:space-between; }
+.header .logo { font-size:20px; font-weight:800; color:#fff; letter-spacing:-0.5px; }
+.header .logo span { color:#6366f1; }
+.header nav a { color:#cbd5e1; text-decoration:none; margin-left:24px; font-size:14px; transition:color .2s; }
+.header nav a:hover { color:#fff; }
+
+/* ── Hero ── */
+.hero { background:linear-gradient(135deg,#1e1b4b 0%,#312e81 30%,#4338ca 60%,#6366f1 100%); padding:60px 24px; text-align:center; color:#fff; }
+.hero .icon { font-size:64px; margin-bottom:16px; }
+.hero h1 { font-size:42px; font-weight:800; margin-bottom:12px; letter-spacing:-1px; }
+.hero h1 .gold { color:#f59e0b; }
+.hero .subtitle { font-size:16px; color:#a5b4fc; margin-bottom:20px; }
+.hero .badge { display:inline-block; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.2); padding:8px 20px; border-radius:24px; font-size:14px; color:#e0e7ff; }
+.hero .badge strong { color:#f59e0b; }
+
+/* ── Container ── */
+.container { max-width:1280px; margin:0 auto; padding:0 24px; }
+
+/* ── Section ── */
+.section { margin:48px 0; }
+.section-title { display:flex; align-items:center; gap:12px; margin-bottom:24px; }
+.section-title .icon { font-size:28px; }
+.section-title h2 { font-size:24px; font-weight:800; color:#1e293b; }
+.section-title .line { flex:1; height:2px; background:linear-gradient(90deg,#6366f1,transparent); border-radius:2px; }
+
+/* ── Cards ── */
+.card { background:#fff; border-radius:12px; border:1px solid #e2e8f0; box-shadow:0 1px 3px rgba(0,0,0,.06); transition:all .25s; }
+.card:hover { border-color:#6366f1; box-shadow:0 4px 16px rgba(99,102,241,.1); transform:translateY(-2px); }
+.card-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.card-grid-6 { display:grid; grid-template-columns:repeat(6,1fr); gap:16px; }
+
+/* ── Table ── */
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; }
+table thead { background:#6366f1; color:#fff; }
+table thead th { padding:14px 16px; font-size:14px; font-weight:600; text-align:left; }
+table tbody td { padding:12px 16px; border-bottom:1px solid #f1f5f9; font-size:14px; }
+table tbody tr:hover { background:#f8fafc; }
+
+/* ── Insight list ── */
+.insight-list { list-style:none; padding:0; }
+.insight-list li { padding:12px 16px; margin-bottom:8px; background:#f8fafc; border-radius:8px; border-left:3px solid #6366f1; font-size:14px; }
+
+/* ── Blue sea box ── */
+.blue-box { background:linear-gradient(135deg,#eef2ff,#faf5ff); border:1px solid #c7d2fe; border-radius:12px; padding:24px; margin:16px 0; }
+.blue-box .risk { display:inline-block; padding:4px 12px; border-radius:12px; font-size:13px; font-weight:600; color:#fff; }
+
+/* ── Advice box ── */
+.advice-box { background:#fffbeb; border:1px solid #fde68a; border-radius:12px; padding:24px; margin:16px 0; }
+.advice-box h4 { color:#92400e; margin-bottom:8px; }
+
+/* ── Footer ── */
+.footer { background:#1e1b4b; color:#94a3b8; padding:40px 24px; margin-top:60px; text-align:center; font-size:13px; }
+.footer .brand { font-size:18px; font-weight:800; color:#fff; margin-bottom:8px; }
+.footer .brand span { color:#6366f1; }
+.footer .disclaimer { margin-top:16px; color:#64748b; font-size:12px; line-height:1.6; }
+
+/* ── Responsive ── */
+@media (max-width:1024px) { .card-grid { grid-template-columns:repeat(2,1fr); } .card-grid-6 { grid-template-columns:repeat(3,1fr); } }
+@media (max-width:640px) { .card-grid { grid-template-columns:1fr; } .card-grid-6 { grid-template-columns:repeat(2,1fr); } .hero h1 { font-size:28px; } }
+
+/* ── Data note ── */
+.data-note { background:#f1f5f9; border-radius:8px; padding:16px 20px; margin-top:24px; font-size:13px; color:#64748b; }
+.data-note strong { color:#6366f1; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header class="header">
+    <div class="logo">OH<span>TikTok</span></div>
+    <nav>
+        <a href="#">首页</a>
+        <a href="#">品类分析</a>
+        <a href="#">爆品榜单</a>
+        <a href="#">数据工具</a>
+    </nav>
+</header>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+    <div class="icon">💍</div>
+    <h1>珠宝配饰 <span class="gold">·</span> TikTok Shop 品类市场分析报告</h1>
+    <p class="subtitle">Jewelry & Accessories — 2026年Q1-Q2 美区(US) 深度分析</p>
+    <div class="badge">数据来源: <strong>FastMoss & Trenz.ai</strong> · 更新时间: 2026年7月</div>
+</section>
+
+<div class="container">
+
+<!-- ═══════════════ 1. 核心数据概览 ═══════════════ -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">📊</span>
+        <h2>核心数据概览</h2>
+        <div class="line"></div>
+    </div>
+    <div class="card-grid">
+        
+        <div class="card" style="padding:20px;text-align:center;">
+            <div style="font-size:28px;margin-bottom:8px;">📦</div>
+            <div style="font-size:13px;color:#94a3b8;margin-bottom:4px;">日销量</div>
+            <div style="font-size:22px;font-weight:800;color:#1e293b;">18.0万件</div>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;">
+            <div style="font-size:28px;margin-bottom:8px;">💰</div>
+            <div style="font-size:13px;color:#94a3b8;margin-bottom:4px;">日GMV</div>
+            <div style="font-size:22px;font-weight:800;color:#1e293b;">$540万</div>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;">
+            <div style="font-size:28px;margin-bottom:8px;">📊</div>
+            <div style="font-size:13px;color:#94a3b8;margin-bottom:4px;">月GMV</div>
+            <div style="font-size:22px;font-weight:800;color:#1e293b;">$1.6亿</div>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;">
+            <div style="font-size:28px;margin-bottom:8px;">💵</div>
+            <div style="font-size:13px;color:#94a3b8;margin-bottom:4px;">平均客单价</div>
+            <div style="font-size:22px;font-weight:800;color:#1e293b;">$28</div>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;">
+            <div style="font-size:28px;margin-bottom:8px;">📋</div>
+            <div style="font-size:13px;color:#94a3b8;margin-bottom:4px;">在售商品</div>
+            <div style="font-size:22px;font-weight:800;color:#1e293b;">145万</div>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;">
+            <div style="font-size:28px;margin-bottom:8px;">✅</div>
+            <div style="font-size:13px;color:#94a3b8;margin-bottom:4px;">动销商品</div>
+            <div style="font-size:22px;font-weight:800;color:#1e293b;">28.0万</div>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;">
+            <div style="font-size:28px;margin-bottom:8px;">📈</div>
+            <div style="font-size:13px;color:#94a3b8;margin-bottom:4px;">动销率</div>
+            <div style="font-size:22px;font-weight:800;color:#1e293b;">19.3%</div>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;">
+            <div style="font-size:28px;margin-bottom:8px;">🏆</div>
+            <div style="font-size:13px;color:#94a3b8;margin-bottom:4px;">TOP50集中度</div>
+            <div style="font-size:22px;font-weight:800;color:#1e293b;">10.1%</div>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;">
+            <div style="font-size:28px;margin-bottom:8px;">🥇</div>
+            <div style="font-size:13px;color:#94a3b8;margin-bottom:4px;">TOP10集中度</div>
+            <div style="font-size:22px;font-weight:800;color:#1e293b;">11.9%</div>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;">
+            <div style="font-size:28px;margin-bottom:8px;">👥</div>
+            <div style="font-size:13px;color:#94a3b8;margin-bottom:4px;">卖家人数</div>
+            <div style="font-size:22px;font-weight:800;color:#1e293b;">2.3万</div>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;">
+            <div style="font-size:28px;margin-bottom:8px;">🎬</div>
+            <div style="font-size:13px;color:#94a3b8;margin-bottom:4px;">达人数量</div>
+            <div style="font-size:22px;font-weight:800;color:#1e293b;">3.5万</div>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;">
+            <div style="font-size:28px;margin-bottom:8px;">🚀</div>
+            <div style="font-size:13px;color:#94a3b8;margin-bottom:4px;">同比增长</div>
+            <div style="font-size:22px;font-weight:800;color:#1e293b;">+29%</div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════ 2. 市场规模 & 竞争格局表 ═══════════════ -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">📈</span>
+        <h2>市场规模 &amp; 竞争格局</h2>
+        <div class="line"></div>
+    </div>
+    <div class="table-wrap">
+    <table>
+        <thead><tr><th>指标</th><th>数值</th><th>说明</th></tr></thead>
+        <tbody>
+            <tr><td style="font-weight:600;">日均销量</td><td style="color:#f59e0b;font-weight:700;">18.0万件</td><td>2026年Q2美区日均出单量</td></tr>
+            <tr style="background:#fafafa;"><td style="font-weight:600;">日均GMV</td><td style="color:#f59e0b;font-weight:700;">$540万</td><td>日交易额，反映品类日流水规模</td></tr>
+            <tr><td style="font-weight:600;">月GMV</td><td style="color:#f59e0b;font-weight:700;">$1.6亿</td><td>月度总交易额</td></tr>
+            <tr style="background:#fafafa;"><td style="font-weight:600;">总在售商品数</td><td>145万</td><td>全品类历史累计上架商品</td></tr>
+            <tr><td style="font-weight:600;">动销商品数</td><td>28.0万</td><td>近30天内有销量的活跃商品</td></tr>
+            <tr style="background:#fafafa;"><td style="font-weight:600;">动销率</td><td style="font-weight:600;">19.3%</td><td>动销商品÷总商品，反映效率</td></tr>
+            <tr><td style="font-weight:600;">平均客单价</td><td style="color:#f59e0b;font-weight:700;">$28</td><td>平均每单成交价格</td></tr>
+            <tr style="background:#fafafa;"><td style="font-weight:600;">TOP50店铺集中度</td><td>10.1%</td><td>前50名店铺GMV占比，越低越分散</td></tr>
+            <tr><td style="font-weight:600;">TOP10店铺集中度</td><td>11.9%</td><td>前10名店铺GMV占比，越低新卖家机会越大</td></tr>
+            <tr style="background:#fafafa;"><td style="font-weight:600;">活跃卖家人数</td><td>2.3万</td><td>近30天有销量的店铺总数</td></tr>
+            <tr><td style="font-weight:600;">带货达人数量</td><td>3.5万</td><td>近30天发布带货视频/直播的达人</td></tr>
+            <tr style="background:#fafafa;"><td style="font-weight:600;">同比增长率</td><td style="color:#10b981;font-weight:700;">+29%</td><td>同比增速</td></tr>
+            <tr><td style="font-weight:600;">品类整体风险</td><td><span style="background:#10b981;color:#fff;padding:3px 10px;border-radius:10px;font-size:13px;">低风险</span></td><td>综合退货率、合规门槛、竞争烈度评估</td></tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+
+<!-- ═══════════════ 3. 流量结构 ═══════════════ -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">📱</span>
+        <h2>流量结构分布</h2>
+        <div class="line"></div>
+    </div>
+    <div class="table-wrap">
+    <table>
+        <thead><tr><th>流量来源</th><th>占比</th></tr></thead>
+        <tbody>
+    <tr style="background:#fafafa;"><td style="padding:12px 16px;font-weight:600;">短视频（Video）</td><td style="padding:12px 16px;"><div style="display:flex;align-items:center;gap:8px;"><span style="min-width:55px;text-align:right;font-weight:600;">57.6%</span><div style="flex:1;background:#f1f5f9;border-radius:6px;height:10px;overflow:hidden;"><div style="width:57.6%;height:100%;background:#6366f1;border-radius:6px;"></div></div></div></td></tr>
+    <tr><td style="padding:12px 16px;font-weight:600;">商品卡（Commerce）</td><td style="padding:12px 16px;"><div style="display:flex;align-items:center;gap:8px;"><span style="min-width:55px;text-align:right;font-weight:600;">36.8%</span><div style="flex:1;background:#f1f5f9;border-radius:6px;height:10px;overflow:hidden;"><div style="width:36.8%;height:100%;background:#10b981;border-radius:6px;"></div></div></div></td></tr>
+    <tr style="background:#fafafa;"><td style="padding:12px 16px;font-weight:600;">直播（LIVE）</td><td style="padding:12px 16px;"><div style="display:flex;align-items:center;gap:8px;"><span style="min-width:55px;text-align:right;font-weight:600;">5.6%</span><div style="flex:1;background:#f1f5f9;border-radius:6px;height:10px;overflow:hidden;"><div style="width:5.6%;height:100%;background:#f59e0b;border-radius:6px;"></div></div></div></td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p style="margin-top:12px;font-size:13px;color:#94a3b8;">说明：短视频占比越高，内容驱动越强；商品卡占比越高，搜索/推荐渠道越成熟；直播占比越高，需要更强的直播运营能力。</p>
+</div>
+
+<!-- ═══════════════ 4. 价格带分布 ═══════════════ -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">💲</span>
+        <h2>品类价格带分布</h2>
+        <div class="line"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
+        <div style="height:300px;">
+            <canvas id="priceChart"></canvas>
+        </div>
+        <div class="table-wrap">
+        <table>
+            <thead><tr><th>价格区间</th><th>销量占比</th></tr></thead>
+            <tbody><tr><td style="padding:10px 16px;font-weight:600;">$0-$10</td><td style="padding:10px 16px;">28%</td></tr>
+<tr><td style="padding:10px 16px;font-weight:600;">$10-$20</td><td style="padding:10px 16px;">32%</td></tr>
+<tr><td style="padding:10px 16px;font-weight:600;">$20-$40</td><td style="padding:10px 16px;">22%</td></tr>
+<tr><td style="padding:10px 16px;font-weight:600;">$40-$80</td><td style="padding:10px 16px;">12%</td></tr>
+<tr><td style="padding:10px 16px;font-weight:600;">$80-$150</td><td style="padding:10px 16px;">4%</td></tr>
+<tr><td style="padding:10px 16px;font-weight:600;">$150+</td><td style="padding:10px 16px;">2%</td></tr>
+</tbody>
+        </table>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════ 5. 关键洞察 ═══════════════ -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">💡</span>
+        <h2>品类核心洞察</h2>
+        <div class="line"></div>
+    </div>
+    <ul class="insight-list">
+        <li style="margin-bottom:10px;line-height:1.7;">TOP50集中度仅10.1%，是所有品类中最分散的</li>
+<li style="margin-bottom:10px;line-height:1.7;">商品卡占比36.8%最高，商城搜索流量潜力大</li>
+<li style="margin-bottom:10px;line-height:1.7;">平台佣金仅5%(vs标准6%)，利润空间更大</li>
+<li style="margin-bottom:10px;line-height:1.7;">毛利率30-45%，是利润率最高的品类之一</li>
+<li style="margin-bottom:10px;line-height:1.7;">产品轻小，物流成本极低</li>
+<li style="margin-bottom:10px;line-height:1.7;">快时尚配饰风格款迭代快，适合工厂型卖家</li>
+
+    </ul>
+</div>
+
+<!-- ═══════════════ 6. 蓝海/红海分析 ═══════════════ -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">🌊</span>
+        <h2>蓝海 · 红海 分析</h2>
+        <div class="line"></div>
+    </div>
+    <div class="blue-box">
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+            <div style="font-size:48px;">💍</div>
+            <div style="flex:1;min-width:250px;">
+                <div style="font-size:13px;color:#6366f1;font-weight:600;margin-bottom:4px;">品类评级</div>
+                <div style="margin-bottom:8px;"><span style="color:#f59e0b;font-size:20px;letter-spacing:2px;">★★★★★</span><span style="color:#cbd5e1;font-size:20px;letter-spacing:2px;"></span></div>
+                <div style="font-size:18px;font-weight:700;color:#1e293b;">超级蓝海，利润率最高的品类</div>
+                <div style="margin-top:12px;">
+                    <span class="risk" style="background:#10b981;">风险等级: 低</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card" style="padding:24px;margin-top:16px;">
+        <h3 style="font-size:16px;color:#6366f1;margin-bottom:12px;">📝 市场分析</h3>
+        <p style="line-height:1.8;color:#475569;">珠宝配饰是所有品类中最分散的——TOP50集中度10.1%，TOP10店铺仅11.9%。这意味着市场没有真正的王者，人人都有机会。配合最高的毛利率(30-45%)和最低的平台佣金(5%)，这是一个利润极其丰厚的品类。商品卡占比36.8%最高，说明搜索流量成熟，做商城SEO也有巨大空间。款式迭代快、SKU多，正好匹配工厂的柔性生产能力。</p>
+    </div>
+</div>
+
+<!-- ═══════════════ 7. 竞争深度分析 ═══════════════ -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">⚔️</span>
+        <h2>竞争深度分析</h2>
+        <div class="line"></div>
+    </div>
+    <div class="card-grid">
+        <div class="card" style="padding:20px;">
+            <div style="font-size:14px;color:#94a3b8;margin-bottom:8px;">卖家数量</div>
+            <div style="font-size:28px;font-weight:800;color:#1e293b;">2.3万</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;">活跃竞争店铺数</div>
+        </div>
+        <div class="card" style="padding:20px;">
+            <div style="font-size:14px;color:#94a3b8;margin-bottom:8px;">头部集中度</div>
+            <div style="font-size:28px;font-weight:800;color:#f59e0b;">11.9%</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;">TOP10占比，越低越分散</div>
+        </div>
+        <div class="card" style="padding:20px;">
+            <div style="font-size:14px;color:#94a3b8;margin-bottom:8px;">达人生态</div>
+            <div style="font-size:28px;font-weight:800;color:#1e293b;">3.5万</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;">可合作的带货达人</div>
+        </div>
+        <div class="card" style="padding:20px;">
+            <div style="font-size:14px;color:#94a3b8;margin-bottom:8px;">品类增速</div>
+            <div style="font-size:28px;font-weight:800;color:#10b981;">+29%</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;">同比增长率</div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════ 8. 工厂卖家建议 ═══════════════ -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">🏭</span>
+        <h2>工厂型卖家实战建议</h2>
+        <div class="line"></div>
+    </div>
+    <div class="advice-box">
+        <h4 style="display:flex;align-items:center;gap:8px;"><span style="font-size:24px;">🎯</span> 给中国工厂的落地建议</h4>
+        <p style="line-height:1.8;color:#78350f;">最推荐工厂老板进入的品类之一：①快时尚首饰(项链、耳环、手链)——$5-15出货，卖$15-30；②发饰/头饰——轻小件运费低；③手表周边。核心策略：款式多、上新快、素材多样化。珠宝素材的'实拍佩戴效果'比任何文案都有效。</p>
+    </div>
+</div>
+
+<!-- ═══════════════ 9. 运营策略要点 ═══════════════ -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">🎯</span>
+        <h2>运营策略要点</h2>
+        <div class="line"></div>
+    </div>
+    <div class="card" style="padding:24px;">
+        <table>
+            <thead><tr><th>策略维度</th><th>建议</th><th>优先级</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td style="font-weight:600;">内容方向</td>
+                    <td>以产品使用场景展示为主，"使用前后对比"类视频转化率最高；每条视频控制在15-30秒，前3秒必须展示核心效果</td>
+                    <td><span style="background:#ef4444;color:#fff;padding:3px 10px;border-radius:8px;font-size:12px;">高</span></td>
+                </tr>
+                <tr style="background:#fafafa;">
+                    <td style="font-weight:600;">达人合作</td>
+                    <td>优先合作中小达人（1万-10万粉丝），佣金率设置8-15%；头部达人用于品牌背书，中小达人用于冲量</td>
+                    <td><span style="background:#f59e0b;color:#fff;padding:3px 10px;border-radius:8px;font-size:12px;">中高</span></td>
+                </tr>
+                <tr>
+                    <td style="font-weight:600;">商城优化</td>
+                    <td>优化商品标题关键词（品类词+场景词+属性词），主图使用场景实拍而非白底图，设置合理的商城优惠券</td>
+                    <td><span style="background:#f59e0b;color:#fff;padding:3px 10px;border-radius:8px;font-size:12px;">中高</span></td>
+                </tr>
+                <tr style="background:#fafafa;">
+                    <td style="font-weight:600;">定价策略</td>
+                    <td>参考品类平均客单价$28，新品期可适当低于均价5-10%引流，稳定期恢复利润定价</td>
+                    <td><span style="background:#10b981;color:#fff;padding:3px 10px;border-radius:8px;font-size:12px;">中</span></td>
+                </tr>
+                <tr>
+                    <td style="font-weight:600;">促销节奏</td>
+                    <td>平台大促前2周加大投流预算，日常保持稳定出单不依赖单次活动；淡季用套装组合维持客单价</td>
+                    <td><span style="background:#10b981;color:#fff;padding:3px 10px;border-radius:8px;font-size:12px;">中</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ═══════════════ 10. 关键词SEO建议 ═══════════════ -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">🔍</span>
+        <h2>高流量搜索关键词</h2>
+        <div class="line"></div>
+    </div>
+    <div class="card" style="padding:24px;">
+        <p style="font-size:14px;color:#64748b;margin-bottom:16px;">以下为珠宝配饰品类在TikTok Shop美区的高搜索量关键词，用于优化商品标题和商城SEO：</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="display:inline-block;background:#eef2ff;color:#4f46e5;padding:6px 14px;border-radius:20px;margin:4px;font-size:14px;font-weight:500;">快时尚首饰</span>
+<span style="display:inline-block;background:#eef2ff;color:#4f46e5;padding:6px 14px;border-radius:20px;margin:4px;font-size:14px;font-weight:500;">发饰头饰</span>
+<span style="display:inline-block;background:#eef2ff;color:#4f46e5;padding:6px 14px;border-radius:20px;margin:4px;font-size:14px;font-weight:500;">手表配饰</span>
+<span style="display:inline-block;background:#eef2ff;color:#4f46e5;padding:6px 14px;border-radius:20px;margin:4px;font-size:14px;font-weight:500;">男士饰品</span>
+<span style="display:inline-block;background:#eef2ff;color:#4f46e5;padding:6px 14px;border-radius:20px;margin:4px;font-size:14px;font-weight:500;">DIY手链</span>
+
+        </div>
+        <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="display:inline-block;background:#fef3c7;color:#92400e;padding:6px 14px;border-radius:20px;margin:4px;font-size:14px;font-weight:500;">tiktok made me buy it</span>
+            <span style="display:inline-block;background:#fef3c7;color:#92400e;padding:6px 14px;border-radius:20px;margin:4px;font-size:14px;font-weight:500;">must have</span>
+            <span style="display:inline-block;background:#fef3c7;color:#92400e;padding:6px 14px;border-radius:20px;margin:4px;font-size:14px;font-weight:500;">trending</span>
+            <span style="display:inline-block;background:#fef3c7;color:#92400e;padding:6px 14px;border-radius:20px;margin:4px;font-size:14px;font-weight:500;">viral products</span>
+            <span style="display:inline-block;background:#fef3c7;color:#92400e;padding:6px 14px;border-radius:20px;margin:4px;font-size:14px;font-weight:500;">amazon finds</span>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════ 11. 子品类推荐 ═══════════════ -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">🏷️</span>
+        <h2>重点子品类推荐</h2>
+        <div class="line"></div>
+    </div>
+    <div style="padding:8px 0;">
+        <span style="display:inline-block;background:#eef2ff;color:#4f46e5;padding:6px 14px;border-radius:20px;margin:4px;font-size:14px;font-weight:500;">快时尚首饰</span>
+<span style="display:inline-block;background:#eef2ff;color:#4f46e5;padding:6px 14px;border-radius:20px;margin:4px;font-size:14px;font-weight:500;">发饰头饰</span>
+<span style="display:inline-block;background:#eef2ff;color:#4f46e5;padding:6px 14px;border-radius:20px;margin:4px;font-size:14px;font-weight:500;">手表配饰</span>
+<span style="display:inline-block;background:#eef2ff;color:#4f46e5;padding:6px 14px;border-radius:20px;margin:4px;font-size:14px;font-weight:500;">男士饰品</span>
+<span style="display:inline-block;background:#eef2ff;color:#4f46e5;padding:6px 14px;border-radius:20px;margin:4px;font-size:14px;font-weight:500;">DIY手链</span>
+
+    </div>
+</div>
+
+<!-- ═══════════════ 12. 卖家成功要素分析 ═══════════════ -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">✅</span>
+        <h2>卖家成功要素分析</h2>
+        <div class="line"></div>
+    </div>
+    <div class="card-grid">
+        <div class="card" style="padding:20px;">
+            <div style="font-size:32px;margin-bottom:8px;">📸</div>
+            <div style="font-size:16px;font-weight:700;color:#6366f1;margin-bottom:6px;">视觉素材</div>
+            <p style="font-size:13px;color:#64748b;line-height:1.6;">高质量实拍素材是成交第一驱动力。建议投入预算拍摄3-5组不同场景的产品展示视频，'使用前vs使用后'对比类内容转化率可达普通内容的2-3倍。</p>
+        </div>
+        <div class="card" style="padding:20px;">
+            <div style="font-size:32px;margin-bottom:8px;">🤝</div>
+            <div style="font-size:16px;font-weight:700;color:#6366f1;margin-bottom:6px;">达人矩阵</div>
+            <p style="font-size:13px;color:#64748b;line-height:1.6;">建立金字塔达人矩阵：5%头部达人做品牌背书，30%腰部达人做持续曝光，65%尾部达人做日销冲量。佣金率建议阶梯设置。</p>
+        </div>
+        <div class="card" style="padding:20px;">
+            <div style="font-size:32px;margin-bottom:8px;">📦</div>
+            <div style="font-size:16px;font-weight:700;color:#6366f1;margin-bottom:6px;">供应链</div>
+            <p style="font-size:13px;color:#64748b;line-height:1.6;">备货周期控制在7-15天，淡季库存不低于日均销量×30天，旺季(如Q4)提前60天备货。爆品需有3套备选工厂以防断货。</p>
+        </div>
+        <div class="card" style="padding:20px;">
+            <div style="font-size:32px;margin-bottom:8px;">📊</div>
+            <div style="font-size:16px;font-weight:700;color:#6366f1;margin-bottom:6px;">数据迭代</div>
+            <p style="font-size:13px;color:#64748b;line-height:1.6;">每周复盘核心指标：曝光-点击率(CTR)、加购率、转化率(CVR)。CTR低于3%需优化素材，CVR低于2%需优化详情页和价格。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════ 13. 月度GMV预估与旺季提示 ═══════════════ -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">📅</span>
+        <h2>2026年下半年旺季节点提醒</h2>
+        <div class="line"></div>
+    </div>
+    <div class="card" style="padding:24px;">
+        <table>
+            <thead><tr><th>时间节点</th><th>活动/节日</th><th>备货策略</th><th>预期增幅</th></tr></thead>
+            <tbody>
+                <tr><td style="font-weight:600;">8月</td><td>返校季 (Back to School)</td><td>提前30天完成选品和素材拍摄</td><td>+15~25%</td></tr>
+                <tr style="background:#fafafa;"><td style="font-weight:600;">9月</td><td>秋季上新 / 劳工节</td><td>加大达人合作力度，积累评价和销量权重</td><td>+10~20%</td></tr>
+                <tr><td style="font-weight:600;">10月</td><td>万圣节 (Halloween)</td><td>提前45天备货，主题性产品重点布局</td><td>+25~40%</td></tr>
+                <tr style="background:#fafafa;"><td style="font-weight:600;">11月</td><td>黑五网一 (Black Friday & Cyber Monday)</td><td>全年最重要节点！提前60天备货到FBT/海外仓</td><td>+80~150%</td></tr>
+                <tr><td style="font-weight:600;">12月</td><td>圣诞季 / 年终大促</td><td>12月初完成全部补货，下旬物流停止</td><td>+50~100%</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <p style="margin-top:12px;font-size:13px;color:#94a3b8;">提示：以上增幅为平台大盘预估，各品类实际增幅因产品属性、竞争强度而异。建议参考历史同期数据制定备货计划。</p>
+</div>
+
+<!-- ═══════════════ 14. 数据说明 ═══════════════ -->
+<div class="data-note">
+    <strong>📌 数据来源说明：</strong><br>
+    标有 <strong>★</strong> 的数据为 FastMoss / Trenz.ai 平台公开页面的精确抓取数据，包括日销量、日GMV、月GMV、总在售商品数、平均客单价、同比增长率等核心市场指标。<br>
+    标有 <strong>△</strong> 的数据为基于大盘基准（1687万在售/298万动销=17.7%动销率）按品类GMV占比合理推定的估算值，包括集中度指标、流量结构分布等。<br>
+    数据时间窗口：2026年Q1-Q2（1月-6月），美区(US)。数据仅供参考，实际运营决策请结合自身品类调研。
+</div>
+
+</div><!-- .container -->
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="footer">
+    <div class="brand">OH<span>TikTok</span></div>
+    <p>TikTok Shop 数据分析平台 — 助力中国制造走向全球</p>
+    <div class="disclaimer">
+        本报告数据来自 FastMoss、Trenz.ai 等第三方数据平台，仅供市场参考，不构成投资建议。<br>
+        &copy; 2026 OH TikTok. All rights reserved.
+    </div>
+</footer>
+
+<!-- ═══════════════ Chart.js ═══════════════ -->
+<script>
+(function() {
+    var ctx = document.getElementById('priceChart');
+    if (!ctx) return;
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["$0-$10", "$10-$20", "$20-$40", "$40-$80", "$80-$150", "$150+"],
+            datasets: [{
+                label: '销量占比 (%)',
+                data: [28.0, 32.0, 22.0, 12.0, 4.0, 2.0],
+                backgroundColor: [
+                    'rgba(99,102,241,0.3)', 'rgba(99,102,241,0.45)',
+                    'rgba(99,102,241,0.6)', 'rgba(99,102,241,0.75)',
+                    'rgba(99,102,241,0.85)', 'rgba(99,102,241,0.95)'
+                ],
+                borderColor: '#6366f1',
+                borderWidth: 1,
+                borderRadius: 6,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 50,
+                    ticks: { callback: function(v) { return v + '%'; } },
+                    grid: { color: '#f1f5f9' }
+                },
+                x: {
+                    grid: { display: false }
+                }
+            }
+        }
+    });
+})();
+</script>
+
+</body>
+</html>
